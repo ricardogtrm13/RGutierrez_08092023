@@ -1,0 +1,58 @@
+<div class="container">
+    <h1 mat-dialog-title class="text-center">{{tituloAccion}} Materia</h1>
+    <div mat-dialog-content>
+        <br />
+        <form [formGroup]="formAlumnoMateria">
+            <div class="container">
+                <div>
+                    <mat-form-field>
+                        <mat-label>Buscar</mat-label>
+                        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+                    </mat-form-field>
+        
+                    <div class="mat-elevation-z8">
+                        <table mat-table [dataSource]="dataSource">
+        
+                            <!-- ID Column -->
+                            <ng-container matColumnDef="IdMateria" hidden>
+                                <th mat-header-cell *matHeaderCellDef hidden> ID Materia </th>
+                                <td mat-cell *matCellDef="let element" hidden> {{element.idMateria}} </td>
+                            </ng-container>
+        
+                            <!-- Name Column -->
+                            <ng-container matColumnDef="Nombre">
+                                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                                <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+                            </ng-container>
+        
+                            <!-- Price Column -->
+                            <ng-container matColumnDef="Costo">
+                                <th mat-header-cell *matHeaderCellDef> Costo </th>
+                                <td mat-cell *matCellDef="let element"> {{element.costo}} </td>
+                            </ng-container>
+        
+                            <!-- Action Column -->
+                            <ng-container matColumnDef="Acciones">
+                                <th mat-header-cell *matHeaderCellDef style="width: 100px;"> Acciones </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <button mat-icon-button color="primary" (click)="alumnoMateriaAdd()">
+                                        <mat-icon>edit</mat-icon>
+                                    </button>
+                                </td>
+                            </ng-container>
+        
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+        
+                        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                            aria-label="Select page of periodic elements">
+                        </mat-paginator>
+                    </div>
+        
+                </div>
+            </div>
+        </form>
+    </div>
+    
+</div>

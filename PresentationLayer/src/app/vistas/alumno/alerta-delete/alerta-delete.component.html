@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Eliminar Alumno</h1>
+<div mat-dialog-content>
+  ¿Desea eliminar al alumno {{dataAlumno.nombre}}?
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary"
+  (click)="confirmacionDelete()"
+  cdkFocusInitial>
+    Si, eliminar
+  </button>
+  <button mat-raised-button mat-dialog-close color="warn"> No, volver</button>
+</div>

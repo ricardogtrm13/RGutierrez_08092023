@@ -1,0 +1,30 @@
+CREATE DATABASE ControlEscolar
+GO
+
+USE ControlEscolar
+GO
+
+CREATE TABLE Alumno(
+IdAlumno INT PRIMARY KEY IDENTITY(1,1),
+Nombre VARCHAR(50) NOT NULL,
+ApellidoPaterno VARCHAR(50) NOT NULL,
+ApellidoMaterno VARCHAR(50) NOT NULL)
+GO
+
+CREATE TABLE Materia(
+IdMateria INT PRIMARY KEY IDENTITY(1,1),
+Nombre VARCHAR(50) NOT NULL,
+Costo DECIMAL(10,2))
+GO
+
+CREATE TABLE AlumnoMateria(
+IdAlumnoMateria INT PRIMARY KEY IDENTITY(1,1),
+IdAlumno INT,
+IdMateria INT,
+CONSTRAINT FK_Alumno
+FOREIGN KEY (IdAlumno)
+REFERENCES Alumno(IdAlumno),
+CONSTRAINT FK_Materia
+FOREIGN KEY (IdMateria)
+REFERENCES Materia(IdMateria))
+GO
